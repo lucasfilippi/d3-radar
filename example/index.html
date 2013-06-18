@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+body {
+  font: 10px sans-serif;
+  background-color: #EEE;
+  margin:auto;
+}
+
+circle.background {
+  stroke: #DDD;
+  fill: #FFF;
+  stroke-width: 1;
+}
+.axis path {
+  fill: none;
+  stroke: #DDD;
+  stroke-width: 1;
+}
+.axisScale text {
+  display: none;
+}
+.radar path {
+  stroke-width: 2;
+  fill-opacity: 0.1;
+}
+.radar path:hover {
+  fill-opacity: 1;
+}
+.radar0 {
+  stroke: #5EC999;
+  fill: #5EC999;
+}
+.radar2 {
+  stroke: #90ABDA;
+  fill: #90ABDA;
+}
+.radar1 {
+  stroke: #C3B94B;
+  fill: #C3B94B;
+}
+.radar3 {
+  stroke: #BF5940;
+  fill: #BF5940;
+}
+
+.axisLabel {
+  font: 10px sans-serif;
+  text-transform: capitalize;
+  /*text-anchor: middle;*/
+  fill: #333;
+  stroke: none;
+}
+    </style>
+  </head>
+<body>
+<div id="container"></div>
+
+<script src="../vendors/d3.v3.min.js" charset="utf-8"></script>
+<script src="../src/d3-radar.js" charset="utf-8"></script>
+<script>
+
+var chart = radar([
+    {
+      "label": "Longévité",
+      "metric": "longevite",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "Sol Sec",
+      "metric": "sec",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "Sol Humide",
+      "metric": "humide",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "Confort Bruit",
+      "metric": "bruit",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "d1 zeff",
+      "metric": "d1",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "d2 efzef  e f ez",
+      "metric": "d2",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "d3 zefzef z ef",
+      "metric": "d3",
+      "domain" : [0, 10]
+    },
+    {
+      "label": "d4d4 efdzed aef ezf",
+      "metric": "d4",
+      "domain" : [0, 10]
+    }])
+  .radius(200)
+  .margin(60)
+  .pointRadius(3);
+
+d3.json("radar.json", function(error, data) {
+  d3.select("#container")
+      .datum(data)
+      .call(chart);
+});
+
+</script>
+<body>

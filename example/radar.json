@@ -1,0 +1,28 @@
+[
+	{
+		"label" : "Michelin ENERGY SAVER + 205/55R16 91 V",
+		"rate" : {
+			"longevite" : 9,
+			"sec" : 10,
+			"humide" : 9,
+			"bruit" : 7,
+			"d1" : 9,
+			"d2" : 10,
+			"d3" : 9,
+			"d4" : 7
+		}
+	},
+	{
+		"label" : "Tagada lorem ipsum dolor",
+		"rate" : {
+			"longevite" : 2,
+			"sec" : 1,
+			"humide" : 3,
+			"bruit" : 4,
+			"d1" : 9,
+			"d2" : 10,
+			"d3" : 9,
+			"d4" : 7
+		}
+	}
+]
