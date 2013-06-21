@@ -58,12 +58,14 @@ circle.background {
   </head>
 <body>
 <div id="container"></div>
-
+<div id="container2"></div>
 <script src="../vendors/d3.v3.min.js" charset="utf-8"></script>
+<script src="../src/radar-configured-layout.js" charset="utf-8"></script>
+<script src="../src/radar-layout.js" charset="utf-8"></script>
 <script src="../src/d3-radar.js" charset="utf-8"></script>
 <script>
-
-var chart = radar([
+/*
+var layout = radarConfiguredLayout().metrics([
     {
       "label": "intelligence",
       "metric": "int",
@@ -93,20 +95,37 @@ var chart = radar([
       "label": "combat",
       "metric": "com",
       "domain" : [0, 160]
-    }])
+    }]),
+  chart = radar().layout(layout)
   .radius(200)
   .margin(60)
   .pointRadius(3);
+
 
 chart.drawLabel = function (selection) {
   selection.selectAll('.radarPoint')
 };
 
-d3.json("radar.json", function(error, data) {
+d3.json("radar-configured.json", function(error, data) {
   d3.select("#container")
       .datum(data)
       .call(chart);
 });
+*/
 
+var chart2 = radar().layout(
+    radarLayout().scale(d3.scale.linear()
+        .range([ 0, 200 ])
+        .domain([0, 350])))
+  .radius(200)
+  .margin(60)
+  .pointRadius(3);
+
+
+d3.json("radar.json", function(error, data) {
+  d3.select("#container2")
+      .datum(data)
+      .call(chart2);
+});
 </script>
 <body>

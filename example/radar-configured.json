@@ -1,0 +1,24 @@
+[
+	{
+		"label" : "Spider-Man",
+		"rate" : {
+			"int" : 140,
+			"str" : 85,
+			"spe" : 96,
+			"dur" : 118,
+			"pow" : 92,
+			"com" : 136
+		}
+	},
+	{
+		"label" : "Batman",
+		"rate" : {
+			"int" : 160,
+			"str" : 29,
+			"spe" : 43,
+			"dur" : 67,
+			"pow" : 60,
+			"com" : 160
+		}
+	}
+]

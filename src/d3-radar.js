@@ -9,46 +9,19 @@ function radar(metricConfiguration) {
     margin = 40,
     radius = 200,
     pointRadius = 3,
-    labelOffset = radius + 10;
+    labelOffset = radius + 10,
+    layout;
 
   function chart(selection) {
 
-    var side = (radius + margin) * 2,
-      pointCount = 0;
+    var side = (radius + margin) * 2;
 
     selection.each(function (data) {
 
-      // Compute configuration
-      metrics = metrics.map(function (metric, i) {
+      layout.radius(radius).data(data).compute();
 
-        metric.scale = d3.scale.linear()
-          .range([ 0, radius ])
-          .domain(metric.domain);
-
-        metric.angle = 2 * Math.PI * i / metrics.length - Math.PI / 2;
-
-        return metric;
-      });
-
-      // Augment data
-      data = data.map(function (d) {
-
-        d.points = metrics.map(function (metric) {
-
-          var origX = metric.scale(d.rate[metric.metric]);
-
-          return {
-            'x': origX * Math.cos(metric.angle),
-            'y': origX * Math.sin(metric.angle),
-            'label': d.rate[metric.metric] + '/' + metric.domain[1],
-            'id': pointCount++
-          };
-
-        });
-
-        return d;
-
-      });
+      metrics = layout.metrics();
+      data = layout.data();
 
       // Select the svg element, if it exists.
       var svg = d3.select(this).selectAll('svg').data([metrics]);
@@ -117,6 +90,14 @@ function radar(metricConfiguration) {
       return pointRadius;
     }
     pointRadius = _;
+    return chart;
+  };
+
+  chart.layout = function (_) {
+    if (!arguments.length) {
+      return layout;
+    }
+    layout = _;
     return chart;
   };
 
